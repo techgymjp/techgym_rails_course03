@@ -1,0 +1,6 @@
+ja:
+  enums:
+    book:
+      status:
+        yet: 未読
+        done: 読書済み

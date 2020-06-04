@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ApiApp</title>
+    <title>読書管理アプリ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <main class="col-12 mt-3 d-flex">
+      <%= render '/shared/side_bar' %>
+      <div class="col-10">
+        <% if notice.present? %>
+        <div class=" alert alert-success">
+          <%= notice %>
+        </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
+
