@@ -1,2 +1,23 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h1><%= Book.model_name.human %>管理</h1>
+<div id="books" class="mt-4">
+  <% @books.each do |book| %>
+  <div class="book card p-1 m-1 d-inline-block align-top">
+    <img src="<%= book.thumbnail_url %>" class="thumbnail bd-placeholder-img card-img-top" alt="プレビュー画像">
+    <div class="card-body p-2">
+      <h5 class="title card-title"><%= book.title %></h5>
+      <p class="description card-text"><%= book.description %></p>
+      <p class="card-text">ステータス： <%= book.status_i18n %></p>
+        <%= link_to "表示", book, class: "btn btn-secondary d-block mb-1" %>
+        <%= link_to '削除', book, method: :delete, class: "btn btn-danger d-block mb-1", data: { confirm: '本当によろしいですか？' } %>
+        <%= link_to book.url, target: "_blank", class: "btn btn-primary d-block mb-1" do %>
+        プレビュー <i class="fas fa-external-link-alt ml-1"></i>
+        <% end %>
+        <% if book.yet? %>
+          <%= link_to '読書済みにする', book_progress_path(book, book: {status: :done}), method: :patch , class: 'btn btn-info d-block mb-1' %>
+        <% else %>
+          <%= link_to '未読にする', book_progress_path(book, book: {status: :yet}), method: :patch , class: 'btn btn-warning d-block mb-1' %>
+        <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

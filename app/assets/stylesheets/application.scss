@@ -17,3 +17,27 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+table.table .left-row {
+  width: 16.66%;
+}
+
+#books {
+  .book {
+    width: 22%;
+    img.thumbnail {
+      width: 100%;
+      height: 300px;
+    }
+    .title {
+      height: 2.4em;
+      overflow: hidden;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    p.description {
+      height: 7.5em;
+      overflow: hidden;
+    }
+  }
+}

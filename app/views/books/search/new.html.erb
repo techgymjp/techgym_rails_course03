@@ -1,0 +1,31 @@
+<h1><%= Book.model_name.human %>検索</h1>
+<%= form_with url: new_books_search_path, scope: :q, method: "get", local: true, skip_enforcing_utf8: true, html: {class: "search-form"} do |f| %>
+<div class="d-flex col-4">
+  <%= f.text_field :keyword, value: @search_word, class: "form-control" %>
+  <%= f.submit "検索", name: nil, class: "btn btn-primary ml-2" %>
+</div>
+<% end %>
+
+<% if @books.present? %>
+<%= form_with local: true do |f| %>
+  <div id="books" class="mt-4">
+    <% @books.each_with_index do |book, i| %>
+    <div class="book card p-1 m-1 d-inline-block align-top">
+      <img src="<%= book[:thumbnail_url] %>" class="bd-placeholder-img card-img-top thumbnail" alt="プレビュー画像">
+      <div class="card-body p-2">
+        <%= check_box_tag "books[#{i}][is_create]" %><br />
+        <%= label_tag "books[#{i}][is_create]", book[:title], class: 'title card-title' %>
+
+        <p class="description card-text"><%= book[:description] %></p>
+          <%= link_to book[:url], target: "_blank", class: "btn btn-primary d-block mb"  do %>
+          プレビュー <i class="fas fa-external-link-alt ml-1"></i>
+          <% end %>
+      </div>
+    </div>
+
+    <%= hidden_field_tag "books[#{i}][book][isbn]", book[:isbn]%>
+    <% end %>
+  </div>
+  <%= f.submit "保存", name: nil, class: "btn btn-success mt-4 d-block" %>
+<% end %>
+<% end %>

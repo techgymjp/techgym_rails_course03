@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      book: 書籍  #g
+
+    attributes:
+      book:
+        description: 詳細  #g
+        isbn: ISBN  #g
+        status: 状態  #g
+        thumbnail_url: サムネイル  #g
+        title: 題名  #g
+        url: URL  #g
