@@ -11,7 +11,6 @@ class Books::SearchController < ApplicationController
       books_json = JSON.load(f.read)
 
       @books = books_json["items"].map { |item| get_book_from_json(item) }.compact
-      render plain: @books
     end
   end
 
@@ -26,6 +25,10 @@ class Books::SearchController < ApplicationController
     if ids && isbn_13_index = ids.index { |h| h["type"] == "ISBN_13" }
       book[:isbn] = ids[isbn_13_index]["identifier"]
     end
+    book[:title] = item.dig("volumeInfo", "title")
+    book[:url] = item.dig("volumeInfo", "previewLink")
+    book[:description] = item.dig("volumeInfo", "description")
+    book[:thumbnail_url] = item.dig("volumeInfo", "imageLinks", "thumbnail")
     return nil if book.values.include?(nil)
     book
   end
