@@ -7,6 +7,7 @@ class Books::SearchController < ApplicationController
     if @search_word.present?
       url = URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{params[:q][:keyword]}&maxResults=10&startIndex=0")
       user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+      f = OpenURI.open_uri(url, { "User-Agent" => user_agent })
     end
   end
 
