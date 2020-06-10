@@ -15,6 +15,7 @@ class Books::SearchController < ApplicationController
   end
 
   def create
+    render plain: books_params
   end
 
   private
