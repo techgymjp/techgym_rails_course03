@@ -7,7 +7,7 @@
 <% end %>
 
 <% if @books.present? %>
-<%= form_with local: true do |f| %>
+<%= form_with url: books_search_index_path, local: true do |f| %>
   <div id="books" class="mt-4">
     <% @books.each_with_index do |book, i| %>
     <div class="book card p-1 m-1 d-inline-block align-top">
@@ -24,6 +24,10 @@
     </div>
 
     <%= hidden_field_tag "books[#{i}][book][isbn]", book[:isbn]%>
+    <%= hidden_field_tag "books[#{i}][book][thumbnail_url]", book[:thumbnail_url]%>
+    <%= hidden_field_tag "books[#{i}][book][title]", book[:title]%>
+    <%= hidden_field_tag "books[#{i}][book][description]", book[:description]%>
+    <%= hidden_field_tag "books[#{i}][book][url]", book[:url]%>
     <% end %>
   </div>
   <%= f.submit "保存", name: nil, class: "btn btn-success mt-4 d-block" %>
