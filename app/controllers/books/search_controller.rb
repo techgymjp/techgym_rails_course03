@@ -15,7 +15,12 @@ class Books::SearchController < ApplicationController
   end
 
   def create
-    render plain: books_params
+    books_params[:books].values.each do |book_params|
+      if book_params[:is_create]
+        Book.create(book_params[:book])
+      end
+    end
+    redirect_to books_path, notice: "#{Book.model_name.human}を追加しました"
   end
 
   private
