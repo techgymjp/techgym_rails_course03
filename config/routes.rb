@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :books, only: [:index, :show, :destroy] do
     resource :progress, only: [:update], module: 'books'
+    resources :libraries, only: [:index], module: 'books'
   end
   namespace :libraries do
     resources :search, only: [:new, :create]
