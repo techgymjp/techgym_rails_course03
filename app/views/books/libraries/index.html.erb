@@ -1,0 +1,30 @@
+<h1>蔵書・貸し出し確認</h1>
+<div class="mt-3">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td class="left-row"><%= t Book.human_attribute_name(:title) %></td>
+        <td><%= @book.title %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "再読み込み", book_libraries_path(@book), class: "btn btn-primary mt-3" %>
+
+<div id="libraries" class="mt-4">
+  <div class="library card p-1 m-1 d-inline-block align-top">
+    <div class="card-body p-2">
+      <h5 class="title card-title">ダミー図書館名</h5>
+      <p class="other card-text">ダミー住所</p>
+      <p class="other card-text">ダミー電話番号</p>
+      <p class="other card-text">ダミー貸し出し状況</p>
+      <%= link_to "/", target: "_blank", class: "btn btn-primary d-block mb-1" do %>
+      図書館HP <i class="fas fa-external-link-alt ml-1"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to "戻る", books_path, class: "btn btn-secondary mt-3" %>
+
