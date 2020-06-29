@@ -5,9 +5,19 @@
         <i class="fas fa-book-open mr-2"></i>書籍管理
       <% end %>
     </li>
-    <li>
+    <li class="mb-3">
       <%= link_to new_books_search_path do %>
-        <i class="fas fa-search menu-icon mr-2"></i>検索
+        <i class="fas fa-search menu-icon mr-2"></i>書籍検索
+      <% end %>
+    </li>
+    <li class="mb-3">
+      <%= link_to libraries_path do %>
+        <i class="fas fa-building menu-icon mr-2"></i>図書館管理
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_libraries_search_path do %>
+        <i class="fas fa-search menu-icon mr-2"></i>図書館検索
       <% end %>
     </li>
   </ul>
