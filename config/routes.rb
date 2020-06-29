@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show, :destroy] do
     resource :progress, only: [:update], module: 'books'
   end
+  resources :libraries, only: [:index, :show, :destroy]
 end
