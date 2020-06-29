@@ -26,7 +26,6 @@ module ApiApp
       g.javascripts false
       g.stylesheets false
       g.helper false
-      g.test_framework false
     end
 
     config.generators.system_tests = nil
