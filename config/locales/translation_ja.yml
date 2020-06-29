@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       book: 書籍  #g
+      library: 図書館  #g
 
     attributes:
       book:
@@ -10,4 +11,12 @@ ja:
         status: 状態  #g
         thumbnail_url: サムネイル  #g
         title: 題名  #g
+        url: URL  #g
+
+      library:
+        address: 住所  #g
+        code: コード  #g
+        key: キー  #g
+        name: 名前  #g
+        tel: 電話  #g
         url: URL  #g
