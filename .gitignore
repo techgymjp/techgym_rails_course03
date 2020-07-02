@@ -23,6 +23,8 @@
 /public/assets
 .byebug_history
 
-# Ignore master key for decrypting credentials and more.
-/config/master.key
+# 学習用テキストのため、master.keyをGitで管理しておりますす。
+# 実際に作成する時には、必ずmaster.keyをgithubの管理から除外してください。
+# /config/master.key
+
 /vendor/bundle
