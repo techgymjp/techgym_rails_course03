@@ -9,11 +9,26 @@ class Libraries::SearchController < ApplicationController
       f = OpenURI.open_uri(url, { "User-Agent" => user_agent })
       libraries_json = JSON.load(f.read)
 
-      render plain: libraries_json
+      @libraries = libraries_json.map { |item| get_library_from_json(item) }.compact
+      render plain: @libraries
     end
   end
  
   def create
     render plain: params
+  end
+
+  private
+
+  def get_library_from_json(item)
+    library = {}
+    library[:name] = item.dig("formal")
+    library[:code] = item.dig("systemid")
+    library[:key] = item.dig("libkey")
+    library[:address] = item.dig("address")
+    library[:tel] = item.dig("tel")
+    library[:url] = item.dig("url_pc")
+    return nil if library.values.include?(nil)
+    library
   end
 end
