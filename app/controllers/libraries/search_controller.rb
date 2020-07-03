@@ -15,7 +15,12 @@ class Libraries::SearchController < ApplicationController
   end
  
   def create
-    render plain: params
+    libraries_params[:libraries].values.each do |library_params|
+      if library_params[:is_create]
+        Library.create(library_params[:library])
+      end
+    end
+    redirect_to libraries_path, notice: "#{Library.model_name.human}を追加しました"
   end
 
   private
@@ -30,5 +35,9 @@ class Libraries::SearchController < ApplicationController
     library[:url] = item.dig("url_pc")
     return nil if library.values.include?(nil)
     library
+  end
+
+  def libraries_params
+    params.permit(libraries: [:is_create, library: [:name, :code, :key, :address, :tel, :url]])
   end
 end
