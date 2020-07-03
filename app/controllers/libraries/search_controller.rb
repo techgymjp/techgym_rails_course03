@@ -2,6 +2,7 @@ require 'open-uri'
 
 class Libraries::SearchController < ApplicationController
   def new
+    @libraries = []
     @city = params.dig(:q, :city)
     if @city.present?
       url = URI.encode("http://api.calil.jp/library?appkey=#{Rails.application.credentials.calil_app_key}&city=#{@city}&format=json&callback= ")
@@ -10,7 +11,6 @@ class Libraries::SearchController < ApplicationController
       libraries_json = JSON.load(f.read)
 
       @libraries = libraries_json.map { |item| get_library_from_json(item) }.compact
-      render plain: @libraries
     end
   end
  

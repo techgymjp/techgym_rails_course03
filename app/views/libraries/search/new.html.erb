@@ -1,21 +1,36 @@
 <h1>図書館検索</h1>
 <%= form_with url: new_libraries_search_path, scope: :q, method: "get", local: true, skip_enforcing_utf8: true, html: {class: "search-form"} do |f| %>
 <div class="d-flex col-4">
-  <%= f.text_field :city, class: "form-control" %>
+  <%= f.text_field :city, value: @city, class: "form-control" %>
   <%= f.submit "検索", name: nil, class: "btn btn-primary ml-2" %>
 </div>
 <% end %>
-<div id="libraries" class="mt-4">
-  <div class="library card p-1 m-1 d-inline-block align-top">
-    <div class="card-body p-2">
-      <%= check_box_tag "is_create" %><br />
-      <%= label_tag "is_create", "テックジム図書館", class: 'title card-title' %>
-      <p class="other card-text">東京都港区</p>
-      <p class="other card-text">03-1234-5678</p>
 
-        <%= link_to "/", target: "_blank", class: "btn btn-primary d-block mb"  do %>
-        図書館HP <i class="fas fa-external-link-alt ml-1"></i>
-        <% end %>
+<% if @libraries.present? %>
+<%= form_with url: libraries_search_index_path, local: true do |f| %>
+  <div id="libraries" class="mt-4">
+    <% @libraries.each_with_index do |library, i| %>
+    <div class="library card p-1 m-1 d-inline-block align-top">
+      <div class="card-body p-2">
+        <%= check_box_tag "libraries[#{i}][is_create]" %><br />
+        <%= label_tag "libraries[#{i}][is_create]", library[:name], class: 'title card-title' %>
+        <p class="other card-text"><%= library[:address] %></p>
+        <p class="other card-text"><%= library[:tel] %></p>
+
+          <%= link_to library[:url], target: "_blank", class: "btn btn-primary d-block mb"  do %>
+          プレビュー <i class="fas fa-external-link-alt ml-1"></i>
+          <% end %>
+      </div>
     </div>
+
+    <%= hidden_field_tag "libraries[#{i}][library][name]", library[:name]%>
+    <%= hidden_field_tag "libraries[#{i}][library][code]", library[:code]%>
+    <%= hidden_field_tag "libraries[#{i}][library][key]", library[:key]%>
+    <%= hidden_field_tag "libraries[#{i}][library][address]", library[:address]%>
+    <%= hidden_field_tag "libraries[#{i}][library][tel]", library[:tel]%>
+    <%= hidden_field_tag "libraries[#{i}][library][url]", library[:url]%>
+    <% end %>
   </div>
-</div>
+  <%= f.submit "保存", name: nil, class: "btn btn-success mt-4 d-block" %>
+<% end %>
+<% end %>
