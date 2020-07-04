@@ -8,7 +8,7 @@
       <p class="description card-text"><%= book.description %></p>
       <p class="card-text">ステータス： <%= book.status_i18n %></p>
         <%= link_to "表示", book, class: "btn btn-secondary d-block mb-1" %>
-        <%= link_to "蔵書・貸し出し確認", book_libraries_path(book), class: "btn btn-success d-block mb-1" %>
+        <%= link_to "蔵書・貸出確認", book_libraries_path(book), class: "btn btn-success d-block mb-1" %>
         <%= link_to '削除', book, method: :delete, class: "btn btn-danger d-block mb-1", data: { confirm: '本当によろしいですか？' } %>
         <%= link_to book.url, target: "_blank", class: "btn btn-primary d-block mb-1" do %>
         プレビュー <i class="fas fa-external-link-alt ml-1"></i>
