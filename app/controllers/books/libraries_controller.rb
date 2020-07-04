@@ -11,7 +11,6 @@ class Books::LibrariesController < ApplicationController
     f = OpenURI.open_uri(url, { "User-Agent" => user_agent })
     check_json = JSON.load(f.read)
     @check_data = check_json["books"][@book.isbn]
-    render plain: @check_data
   end
 
   private
