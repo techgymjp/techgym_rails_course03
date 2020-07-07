@@ -7,8 +7,7 @@ class Books::LibrariesController < ApplicationController
     @libraries = Library.all.order("created_at desc")
     libkeys = @libraries.pluck(:code).join(',')
     url = URI.encode("http://api.calil.jp/check?appkey=#{Rails.application.credentials.calil_app_key}&isbn=#{@book.isbn}&systemid=#{libkeys}&format=json&callback=no")
-    user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
-    f = OpenURI.open_uri(url, { "User-Agent" => user_agent })
+    f = OpenURI.open_uri(url, { "User-Agent" => Settings.USER_AGENT })
     check_json = JSON.load(f.read)
     @check_data = check_json["books"][@book.isbn]
   end

@@ -6,8 +6,7 @@ class Libraries::SearchController < ApplicationController
     @city = params.dig(:q, :city)
     if @city.present?
       url = URI.encode("http://api.calil.jp/library?appkey=#{Rails.application.credentials.calil_app_key}&city=#{@city}&format=json&callback= ")
-      user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
-      f = OpenURI.open_uri(url, { "User-Agent" => user_agent })
+      f = OpenURI.open_uri(url, { "User-Agent" => Settings.USER_AGENT })
       libraries_json = JSON.load(f.read)
 
       @libraries = libraries_json.map { |item| get_library_from_json(item) }.compact
