@@ -15,6 +15,7 @@ gem 'bootstrap', '~> 4.4', '>= 4.4.1'
 gem 'font-awesome-sass', '~> 5.12'
 gem 'i18n_generators', '~> 2.2', '>= 2.2.2'
 gem 'enum_help', '~> 0.0.17'
+gem 'config', '~> 2.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
