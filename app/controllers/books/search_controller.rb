@@ -6,8 +6,7 @@ class Books::SearchController < ApplicationController
     @search_word = params.dig(:q, :keyword)
     if @search_word.present?
       url = URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{params[:q][:keyword]}&maxResults=10&startIndex=0&langRestrict=ja")
-      user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
-      f = OpenURI.open_uri(url, { "User-Agent" => user_agent })
+      f = OpenURI.open_uri(url, { "User-Agent" => Settings.USER_AGENT })
       books_json = JSON.load(f.read)
 
       @books = books_json["items"].map { |item| get_book_from_json(item) }.compact
