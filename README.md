@@ -1,24 +1,38 @@
-# README
+# テックジム Railsコース 第三章 「API」
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<目標>APIを使って読書管理アプリを作ろう
 
-Things you may want to cover:
+<学ぶこと>
 
-* Ruby version
+・環境構築（AWS Cloud9）
 
-* System dependencies
+・Ruby on Railsの基本開発
 
-* Configuration
+・APIリクエスト
 
-* Database creation
+・Json操作
 
-* Database initialization
+・フォーム操作
 
-* How to run the test suite
+・データベース保存
 
-* Services (job queues, cache servers, search engines, etc.)
+## オープン講座
+テキスト 
+https://github.com/techgymjp/techgym_rails_course03/blob/master/RailsCourse03.pdf
 
-* Deployment instructions
+実行環境(Cloud9) https://ap-northeast-1.console.aws.amazon.com/cloud9
 
-* ...
+動画(環境構築) 
+
+https://www.youtube.com/watch?v=_CM27yj647Y&list=PL9u04bPGBuUPVseIvQqOCeOydgczDrmhe&index=46
+
+動画(オープン講座) 
+
+https://www.youtube.com/watch?v=uKDtLb5N_YM&list=PL9u04bPGBuUPVseIvQqOCeOydgczDrmhe&index=47
+
+オープン講座アンケート
+https://forms.gle/EvFhUKnpZhxKUp8q8
+
+Railsコース紹介ページ
+https://techgym.jp/?p=18356
+
